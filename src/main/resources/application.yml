@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  context-path: /
+  
+
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://47.100.220.99:3306/db_jude
+      username: root
+      password: password
+   jpa:
+     hibernate.ddl-auto: update
+     show-sql: true
+   thymeleaf:
+    cache: false
