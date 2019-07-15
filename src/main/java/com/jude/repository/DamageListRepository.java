@@ -8,15 +8,16 @@ import com.jude.entity.DamageList;
 
 /**
  * 报损单Repository接口
- * @author Administrator
  *
+ * @author Administrator
  */
-public interface DamageListRepository extends JpaRepository<DamageList, Integer>,JpaSpecificationExecutor<DamageList>{
+public interface DamageListRepository extends JpaRepository<DamageList, Integer>, JpaSpecificationExecutor<DamageList> {
 
-	/**
-	 * 获取当天最大报损单号
-	 * @return
-	 */
-	@Query(value="SELECT MAX(damage_number) FROM t_damage_list WHERE TO_DAYS(damage_date) = TO_DAYS(NOW())",nativeQuery=true)
-	public String getTodayMaxDamageNumber();
+    /**
+     * 获取当天最大报损单号
+     *
+     * @return
+     */
+    @Query(value = "SELECT MAX(damage_number) FROM t_damage_list WHERE TO_DAYS(damage_date) = TO_DAYS(NOW())", nativeQuery = true)
+    public String getTodayMaxDamageNumber();
 }

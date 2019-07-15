@@ -9,16 +9,17 @@ import com.jude.entity.RoleMenu;
 
 /**
  * 角色权限菜单Repository接口
- * @author jude
  *
+ * @author jude
  */
-public interface RoleMenuRepository extends JpaRepository<RoleMenu, Integer>,JpaSpecificationExecutor<RoleMenu>{
+public interface RoleMenuRepository extends JpaRepository<RoleMenu, Integer>, JpaSpecificationExecutor<RoleMenu> {
 
-	/**
-	 * 根据用户id删除所有关联信息
-	 * @param id
-	 */
-	@Query(value="delete from t_role_menu where role_id=?1",nativeQuery=true)
-	@Modifying
-	public void deleteByRoleId(Integer roleId);
+    /**
+     * 根据用户id删除所有关联信息
+     *
+     * @param id
+     */
+    @Query(value = "delete from t_role_menu where role_id=?1", nativeQuery = true)
+    @Modifying
+    public void deleteByRoleId(Integer roleId);
 }

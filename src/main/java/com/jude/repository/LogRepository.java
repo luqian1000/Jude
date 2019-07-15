@@ -7,10 +7,10 @@ import com.jude.entity.Log;
 
 /**
  * 系统日志Repository接口
- * @author jude
  *
+ * @author jude
  */
-public interface LogRepository extends JpaRepository<Log, Integer>,JpaSpecificationExecutor<Log>{
+public interface LogRepository extends JpaRepository<Log, Integer>, JpaSpecificationExecutor<Log> {
 
-	
+
 }

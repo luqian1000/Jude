@@ -11,158 +11,155 @@ import javax.persistence.Transient;
 
 /**
  * 报损单商品实体
- * @author jude
  *
+ * @author jude
  */
 @Entity
-@Table(name="t_damageListGoods")
+@Table(name = "t_damageListGoods")
 public class DamageListGoods {
 
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@ManyToOne
-	@JoinColumn(name="damageListId")
-	private DamageList damageList; // 报损单
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	@Column(length=50)
-	private String code; // 商品编码
-	
-	
-	@Column(length=50)
-	private String name; // 商品名称
-	
-	@Column(length=50)
-	private String model; // 商品型号
-	
-	@ManyToOne
-	@JoinColumn(name="typeId")
-	private GoodsType type; // 商品类别
-	
-	@Transient
-	private Integer typeId; // 类别id 
-	
-	private Integer goodsId; // 商品id
-	
-	@Column(length=10)
-	private String unit; // 商品单位
-	
-	private float price; // 单价
-	
-	private int num; // 数量
-	
-	private float total; // 总价
+    @ManyToOne
+    @JoinColumn(name = "damageListId")
+    private DamageList damageList; // 报损单
 
-	
+    @Column(length = 50)
+    private String code; // 商品编码
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column(length = 50)
+    private String name; // 商品名称
 
-	public String getCode() {
-		return code;
-	}
+    @Column(length = 50)
+    private String model; // 商品型号
 
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
+    @ManyToOne
+    @JoinColumn(name = "typeId")
+    private GoodsType type; // 商品类别
 
-	public String getName() {
-		return name;
-	}
+    @Transient
+    private Integer typeId; // 类别id
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private Integer goodsId; // 商品id
 
-	public String getModel() {
-		return model;
-	}
+    @Column(length = 10)
+    private String unit; // 商品单位
 
-	public void setModel(String model) {
-		this.model = model;
-	}
+    private float price; // 单价
 
-	public GoodsType getType() {
-		return type;
-	}
+    private int num; // 数量
 
-	public void setType(GoodsType type) {
-		this.type = type;
-	}
-	
-	
-	public Integer getTypeId() {
-		return typeId;
-	}
+    private float total; // 总价
 
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
-	}
 
-	public String getUnit() {
-		return unit;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public float getPrice() {
-		return price;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setPrice(float price) {
-		this.price = price;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public int getNum() {
-		return num;
-	}
 
-	public void setNum(int num) {
-		this.num = num;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public float getTotal() {
-		return total;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTotal(float total) {
-		this.total = total;
-	}
-	
-	
-	public DamageList getDamageList() {
-		return damageList;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public void setDamageList(DamageList damageList) {
-		this.damageList = damageList;
-	}
-	
-	
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public Integer getGoodsId() {
-		return goodsId;
-	}
+    public GoodsType getType() {
+        return type;
+    }
 
-	public void setGoodsId(Integer goodsId) {
-		this.goodsId = goodsId;
-	}
+    public void setType(GoodsType type) {
+        this.type = type;
+    }
 
-	@Override
-	public String toString() {
-		return "DamageListGoods [id=" + id + ", code=" + code + ", name=" + name + ", model=" + model + ", type="
-				+ type + ", unit=" + unit + ", price=" + price + ", num=" + num + ", total=" + total + "]";
-	}
 
-	
-	
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+
+    public DamageList getDamageList() {
+        return damageList;
+    }
+
+    public void setDamageList(DamageList damageList) {
+        this.damageList = damageList;
+    }
+
+
+    public Integer getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    @Override
+    public String toString() {
+        return "DamageListGoods [id=" + id + ", code=" + code + ", name=" + name + ", model=" + model + ", type="
+                + type + ", unit=" + unit + ", price=" + price + ", num=" + num + ", total=" + total + "]";
+    }
+
+
 }

@@ -11,25 +11,25 @@ import com.jude.service.RoleMenuService;
 
 /**
  * 角色权限菜单关联Service实现类
- * @author jude
  *
+ * @author jude
  */
 @Service("roleMenuService")
 @Transactional
-public class RoleMenuServiceImpl implements RoleMenuService{
+public class RoleMenuServiceImpl implements RoleMenuService {
 
-	@Resource
-	private RoleMenuRepository roleMenuRepository;
+    @Resource
+    private RoleMenuRepository roleMenuRepository;
 
-	@Override
-	public void deleteByRoleId(Integer roleId) {
-		roleMenuRepository.deleteByRoleId(roleId);
-	}
+    @Override
+    public void deleteByRoleId(Integer roleId) {
+        roleMenuRepository.deleteByRoleId(roleId);
+    }
 
-	@Override
-	public void save(RoleMenu roleMenu) {
-		roleMenuRepository.save(roleMenu);
-	}
-	
-	
+    @Override
+    public void save(RoleMenu roleMenu) {
+        roleMenuRepository.save(roleMenu);
+    }
+
+
 }

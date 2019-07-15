@@ -8,15 +8,16 @@ import com.jude.entity.PurchaseList;
 
 /**
  * 进货单Repository接口
- * @author Administrator
  *
+ * @author Administrator
  */
-public interface PurchaseListRepository extends JpaRepository<PurchaseList, Integer>,JpaSpecificationExecutor<PurchaseList>{
+public interface PurchaseListRepository extends JpaRepository<PurchaseList, Integer>, JpaSpecificationExecutor<PurchaseList> {
 
-	/**
-	 * 获取当天最大进货单号
-	 * @return
-	 */
-	@Query(value="SELECT MAX(purchase_number) FROM t_purchase_list WHERE TO_DAYS(purchase_date) = TO_DAYS(NOW())",nativeQuery=true)
-	public String getTodayMaxPurchaseNumber();
+    /**
+     * 获取当天最大进货单号
+     *
+     * @return
+     */
+    @Query(value = "SELECT MAX(purchase_number) FROM t_purchase_list WHERE TO_DAYS(purchase_date) = TO_DAYS(NOW())", nativeQuery = true)
+    public String getTodayMaxPurchaseNumber();
 }

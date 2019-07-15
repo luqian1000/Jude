@@ -25,78 +25,77 @@ import com.jude.service.OverflowListService;
 
 /**
  * 报溢单Service实现类
- * @author java1234_小锋老师
  *
+ * @author java1234_小锋老师
  */
 @Service("overflowListService")
 @Transactional
-public class OverflowListServiceImpl implements OverflowListService{
+public class OverflowListServiceImpl implements OverflowListService {
 
-	@Resource
-	private OverflowListRepository overflowListRepository;
-	
-	@Resource
-	private OverflowListGoodsRepository overflowListGoodsRepository;
-	
-	@Resource
-	private GoodsRepository goodsRepository;
-	
-	@Resource
-	private GoodsTypeRepository goodsTypeRepository;
-	
-	@Override
-	public String getTodayMaxOverflowNumber() {
-		return overflowListRepository.getTodayMaxOverflowNumber();
-	}
+    @Resource
+    private OverflowListRepository overflowListRepository;
 
-	@Transactional
-	public void save(OverflowList overflowList, List<OverflowListGoods> overflowListGoodsList) {
-		// 保存每个报溢单商品
-		for(OverflowListGoods overflowListGoods:overflowListGoodsList){
-			overflowListGoods.setType(goodsTypeRepository.findOne(overflowListGoods.getTypeId())); // 设置类别
-			overflowListGoods.setOverflowList(overflowList); // 设置采购单
-			overflowListGoodsRepository.save(overflowListGoods);
-			// 修改商品库存 
-			Goods goods=goodsRepository.findOne(overflowListGoods.getGoodsId());
-			goods.setInventoryQuantity(goods.getInventoryQuantity()+overflowListGoods.getNum());
-			goods.setState(2);
-			goodsRepository.save(goods);
-		}
-		overflowListRepository.save(overflowList); // 保存报溢单
-	}
+    @Resource
+    private OverflowListGoodsRepository overflowListGoodsRepository;
 
-	@Override
-	public List<OverflowList> list(OverflowList overflowList, Direction direction,
-			String... properties) {
-		return overflowListRepository.findAll(new Specification<OverflowList>(){
+    @Resource
+    private GoodsRepository goodsRepository;
 
-			@Override
-			public Predicate toPredicate(Root<OverflowList> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate=cb.conjunction();
-				if(overflowList!=null){
-					if(overflowList.getbOverflowDate()!=null){
-						predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("overflowDate"), overflowList.getbOverflowDate()));
-					}
-					if(overflowList.geteOverflowDate()!=null){
-						predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("overflowDate"), overflowList.geteOverflowDate()));
-					}
-				}
-				return predicate;
-			}
-		  },new Sort(direction, properties));
-	}
+    @Resource
+    private GoodsTypeRepository goodsTypeRepository;
 
-	@Override
-	public void delete(Integer id) {
-		overflowListGoodsRepository.deleteByOverflowListId(id);
-		overflowListRepository.delete(id);
-	}
+    @Override
+    public String getTodayMaxOverflowNumber() {
+        return overflowListRepository.getTodayMaxOverflowNumber();
+    }
 
-	@Override
-	public OverflowList findById(Integer id) {
-		return overflowListRepository.findOne(id);
-	}
+    @Transactional
+    public void save(OverflowList overflowList, List<OverflowListGoods> overflowListGoodsList) {
+        // 保存每个报溢单商品
+        for (OverflowListGoods overflowListGoods : overflowListGoodsList) {
+            overflowListGoods.setType(goodsTypeRepository.findOne(overflowListGoods.getTypeId())); // 设置类别
+            overflowListGoods.setOverflowList(overflowList); // 设置采购单
+            overflowListGoodsRepository.save(overflowListGoods);
+            // 修改商品库存
+            Goods goods = goodsRepository.findOne(overflowListGoods.getGoodsId());
+            goods.setInventoryQuantity(goods.getInventoryQuantity() + overflowListGoods.getNum());
+            goods.setState(2);
+            goodsRepository.save(goods);
+        }
+        overflowListRepository.save(overflowList); // 保存报溢单
+    }
 
+    @Override
+    public List<OverflowList> list(OverflowList overflowList, Direction direction,
+                                   String... properties) {
+        return overflowListRepository.findAll(new Specification<OverflowList>() {
+
+            @Override
+            public Predicate toPredicate(Root<OverflowList> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if (overflowList != null) {
+                    if (overflowList.getbOverflowDate() != null) {
+                        predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("overflowDate"), overflowList.getbOverflowDate()));
+                    }
+                    if (overflowList.geteOverflowDate() != null) {
+                        predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("overflowDate"), overflowList.geteOverflowDate()));
+                    }
+                }
+                return predicate;
+            }
+        }, new Sort(direction, properties));
+    }
+
+    @Override
+    public void delete(Integer id) {
+        overflowListGoodsRepository.deleteByOverflowListId(id);
+        overflowListRepository.delete(id);
+    }
+
+    @Override
+    public OverflowList findById(Integer id) {
+        return overflowListRepository.findOne(id);
+    }
 
 
 }

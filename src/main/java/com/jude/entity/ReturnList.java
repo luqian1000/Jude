@@ -18,163 +18,157 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 退货单
- * @author java1234_小锋 老师
  *
+ * @author java1234_小锋 老师
  */
 @Entity
-@Table(name="t_returnList")
+@Table(name = "t_returnList")
 public class ReturnList {
 
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@Column(length=100)
-	private String returnNumber; // 退货单号
-	
-	@ManyToOne
-	@JoinColumn(name="supplierId")
-	private Supplier supplier; // 供应商
-	
-	@Temporal(TemporalType.TIMESTAMP) 
-	private Date returnDate; // 退货日期
-	
-	private float amountPayable; // 应付金额
-	
-	private float amountPaid; // 实付金额
-	
-	private Integer state; // 交易状态 1 已付  2 未付
-	
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User user; // 操作用户
-	
-	@Column(length=1000)
-	private String remarks; // 备注
-	
-	@Transient
-	private Date bReturnDate; // 起始时间 搜索用到
-	
-	@Transient
-	private Date eReturnDate; // 结束时间 搜索用到
-	
-	@Transient
-	private List<ReturnListGoods> returnListGoodsList=null; // 退货单商品集合
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public Integer getId() {
-		return id;
-	}
+    @Column(length = 100)
+    private String returnNumber; // 退货单号
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	
-	public String getReturnNumber() {
-		return returnNumber;
-	}
+    @ManyToOne
+    @JoinColumn(name = "supplierId")
+    private Supplier supplier; // 供应商
 
-	public void setReturnNumber(String returnNumber) {
-		this.returnNumber = returnNumber;
-	}
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date returnDate; // 退货日期
 
-	
+    private float amountPayable; // 应付金额
 
-	public Supplier getSupplier() {
-		return supplier;
-	}
+    private float amountPaid; // 实付金额
 
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
+    private Integer state; // 交易状态 1 已付  2 未付
 
-	@JsonSerialize(using=CustomDateSerializer.class)
-	public Date getReturnDate() {
-		return returnDate;
-	}
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user; // 操作用户
 
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
+    @Column(length = 1000)
+    private String remarks; // 备注
 
-	public float getAmountPayable() {
-		return amountPayable;
-	}
+    @Transient
+    private Date bReturnDate; // 起始时间 搜索用到
 
-	public void setAmountPayable(float amountPayable) {
-		this.amountPayable = amountPayable;
-	}
+    @Transient
+    private Date eReturnDate; // 结束时间 搜索用到
 
-	public float getAmountPaid() {
-		return amountPaid;
-	}
+    @Transient
+    private List<ReturnListGoods> returnListGoodsList = null; // 退货单商品集合
 
-	public void setAmountPaid(float amountPaid) {
-		this.amountPaid = amountPaid;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Integer getState() {
-		return state;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
 
-	
+    public String getReturnNumber() {
+        return returnNumber;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setReturnNumber(String returnNumber) {
+        this.returnNumber = returnNumber;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public Supplier getSupplier() {
+        return supplier;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
-	public Date getbReturnDate() {
-		return bReturnDate;
-	}
+    @JsonSerialize(using = CustomDateSerializer.class)
+    public Date getReturnDate() {
+        return returnDate;
+    }
 
-	public void setbReturnDate(Date bReturnDate) {
-		this.bReturnDate = bReturnDate;
-	}
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 
-	public Date geteReturnDate() {
-		return eReturnDate;
-	}
+    public float getAmountPayable() {
+        return amountPayable;
+    }
 
-	public void seteReturnDate(Date eReturnDate) {
-		this.eReturnDate = eReturnDate;
-	}
-	
-	
+    public void setAmountPayable(float amountPayable) {
+        this.amountPayable = amountPayable;
+    }
 
-	public List<ReturnListGoods> getReturnListGoodsList() {
-		return returnListGoodsList;
-	}
+    public float getAmountPaid() {
+        return amountPaid;
+    }
 
-	public void setReturnListGoodsList(List<ReturnListGoods> returnListGoodsList) {
-		this.returnListGoodsList = returnListGoodsList;
-	}
+    public void setAmountPaid(float amountPaid) {
+        this.amountPaid = amountPaid;
+    }
 
-	@Override
-	public String toString() {
-		return "ReturnList [id=" + id + ", returnNumber=" + returnNumber + ", supplier=" + supplier + ", returnDate="
-				+ returnDate + ", amountPayable=" + amountPayable + ", amountPaid=" + amountPaid + ", state=" + state
-				+ ", user=" + user + ", remarks=" + remarks + ", bReturnDate=" + bReturnDate + ", eReturnDate="
-				+ eReturnDate + "]";
-	}
+    public Integer getState() {
+        return state;
+    }
 
-	
-	
-	
-	
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public Date getbReturnDate() {
+        return bReturnDate;
+    }
+
+    public void setbReturnDate(Date bReturnDate) {
+        this.bReturnDate = bReturnDate;
+    }
+
+    public Date geteReturnDate() {
+        return eReturnDate;
+    }
+
+    public void seteReturnDate(Date eReturnDate) {
+        this.eReturnDate = eReturnDate;
+    }
+
+
+    public List<ReturnListGoods> getReturnListGoodsList() {
+        return returnListGoodsList;
+    }
+
+    public void setReturnListGoodsList(List<ReturnListGoods> returnListGoodsList) {
+        this.returnListGoodsList = returnListGoodsList;
+    }
+
+    @Override
+    public String toString() {
+        return "ReturnList [id=" + id + ", returnNumber=" + returnNumber + ", supplier=" + supplier + ", returnDate="
+                + returnDate + ", amountPayable=" + amountPayable + ", amountPaid=" + amountPaid + ", state=" + state
+                + ", user=" + user + ", remarks=" + remarks + ", bReturnDate=" + bReturnDate + ", eReturnDate="
+                + eReturnDate + "]";
+    }
+
+
 }

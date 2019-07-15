@@ -8,15 +8,16 @@ import com.jude.entity.CustomerReturnList;
 
 /**
  * 客户退货单Repository接口
- * @author Administrator
  *
+ * @author Administrator
  */
-public interface CustomerReturnListRepository extends JpaRepository<CustomerReturnList, Integer>,JpaSpecificationExecutor<CustomerReturnList>{
+public interface CustomerReturnListRepository extends JpaRepository<CustomerReturnList, Integer>, JpaSpecificationExecutor<CustomerReturnList> {
 
-	/**
-	 * 获取当天最大客户退货单号
-	 * @return
-	 */
-	@Query(value="SELECT MAX(customer_return_number) FROM t_customer_return_list WHERE TO_DAYS(customer_return_date) = TO_DAYS(NOW())",nativeQuery=true)
-	public String getTodayMaxCustomerReturnNumber();
+    /**
+     * 获取当天最大客户退货单号
+     *
+     * @return
+     */
+    @Query(value = "SELECT MAX(customer_return_number) FROM t_customer_return_list WHERE TO_DAYS(customer_return_date) = TO_DAYS(NOW())", nativeQuery = true)
+    public String getTodayMaxCustomerReturnNumber();
 }

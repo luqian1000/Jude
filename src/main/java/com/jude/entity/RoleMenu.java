@@ -9,55 +9,54 @@ import javax.persistence.Table;
 
 /**
  * 角色菜单关联实体
- * @author jude
  *
+ * @author jude
  */
 @Entity
-@Table(name="t_roleMenu")
+@Table(name = "t_roleMenu")
 public class RoleMenu {
-	
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
 
-	@ManyToOne
-	@JoinColumn(name="roleId")
-	private Role role; // 角色
-	
-	@ManyToOne
-	@JoinColumn(name="menuId")
-	private Menu menu; // 菜单
-	
-	
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role; // 角色
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "menuId")
+    private Menu menu; // 菜单
 
-	public Role getRole() {
-		return role;
-	}
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Menu getMenu() {
-		return menu;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setMenu(Menu menu) {
-		this.menu = menu;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	@Override
-	public String toString() {
-		return "RoleMenu [id=" + id + ", role=" + role + ", menu=" + menu + "]";
-	}
-	
-	
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    @Override
+    public String toString() {
+        return "RoleMenu [id=" + id + ", role=" + role + ", menu=" + menu + "]";
+    }
+
+
 }

@@ -8,87 +8,85 @@ import javax.persistence.Table;
 
 /**
  * 供应商实体
- * @author jude
  *
+ * @author jude
  */
 @Entity
-@Table(name="t_supplier")
+@Table(name = "t_supplier")
 public class Supplier {
 
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@Column(length=200)
-	private String name; // 供应商名称
-	
-	@Column(length=50)
-	private String contact; // 联系人
-	
-	@Column(length=50)
-	private String number; // 联系电话
-	
-	@Column(length=300)
-	private String address; // 联系地址
-	
-	@Column(length=1000)
-	private String remarks; // 备注
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public Integer getId() {
-		return id;
-	}
+    @Column(length = 200)
+    private String name; // 供应商名称
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column(length = 50)
+    private String contact; // 联系人
 
-	public String getName() {
-		return name;
-	}
+    @Column(length = 50)
+    private String number; // 联系电话
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(length = 300)
+    private String address; // 联系地址
 
-	public String getContact() {
-		return contact;
-	}
+    @Column(length = 1000)
+    private String remarks; // 备注
 
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getNumber() {
-		return number;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setNumber(String number) {
-		this.number = number;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getContact() {
+        return contact;
+    }
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public String getNumber() {
+        return number;
+    }
 
-	@Override
-	public String toString() {
-		return "[id=" + id + ", name=" + name + ", contact=" + contact + ", number=" + number + ", address="
-				+ address + ", remarks=" + remarks + "]";
-	}
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
-	
-	
-	
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    @Override
+    public String toString() {
+        return "[id=" + id + ", name=" + name + ", contact=" + contact + ", number=" + number + ", address="
+                + address + ", remarks=" + remarks + "]";
+    }
+
+
 }

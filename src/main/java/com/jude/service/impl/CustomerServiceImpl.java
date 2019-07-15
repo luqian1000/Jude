@@ -22,72 +22,72 @@ import com.jude.util.StringUtil;
 
 /**
  * 客户Service实现类
- * @author jude
  *
+ * @author jude
  */
 @Service("customerService")
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
-	@Resource
-	private CustomerRepository customerRepository;
-	
+    @Resource
+    private CustomerRepository customerRepository;
 
-	@Override
-	public void save(Customer customer) {
-		customerRepository.save(customer);
-	}
 
-	@Override
-	public List<Customer> list(Customer customer, Integer page, Integer pageSize, Direction direction, String... properties) {
-		Pageable pageable=new PageRequest(page-1, pageSize, direction,properties);
-		Page<Customer> pageCustomer=customerRepository.findAll(new Specification<Customer>() {
-			
-			@Override
-			public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate=cb.conjunction();
-				if(customer!=null){
-					if(StringUtil.isNotEmpty(customer.getName())){
-						predicate.getExpressions().add(cb.like(root.get("name"), "%"+customer.getName().trim()+"%"));
-					}	
-				}
-				return predicate;
-			}
-		}, pageable);
-		return pageCustomer.getContent();
-	}
+    @Override
+    public void save(Customer customer) {
+        customerRepository.save(customer);
+    }
 
-	@Override
-	public Long getCount(Customer customer) {
-		Long count=customerRepository.count(new Specification<Customer>() {
+    @Override
+    public List<Customer> list(Customer customer, Integer page, Integer pageSize, Direction direction, String... properties) {
+        Pageable pageable = new PageRequest(page - 1, pageSize, direction, properties);
+        Page<Customer> pageCustomer = customerRepository.findAll(new Specification<Customer>() {
 
-			@Override
-			public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate=cb.conjunction();
-				if(customer!=null){
-					if(StringUtil.isNotEmpty(customer.getName())){
-						predicate.getExpressions().add(cb.like(root.get("name"), "%"+customer.getName().trim()+"%"));
-					}	
-				}
-				return predicate;
-			}
-		});
-		return count;
-	}
+            @Override
+            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if (customer != null) {
+                    if (StringUtil.isNotEmpty(customer.getName())) {
+                        predicate.getExpressions().add(cb.like(root.get("name"), "%" + customer.getName().trim() + "%"));
+                    }
+                }
+                return predicate;
+            }
+        }, pageable);
+        return pageCustomer.getContent();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		customerRepository.delete(id);
-	}
+    @Override
+    public Long getCount(Customer customer) {
+        Long count = customerRepository.count(new Specification<Customer>() {
 
-	@Override
-	public Customer findById(Integer id) {
-		return customerRepository.findOne(id);
-	}
+            @Override
+            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if (customer != null) {
+                    if (StringUtil.isNotEmpty(customer.getName())) {
+                        predicate.getExpressions().add(cb.like(root.get("name"), "%" + customer.getName().trim() + "%"));
+                    }
+                }
+                return predicate;
+            }
+        });
+        return count;
+    }
 
-	@Override
-	public List<Customer> findByName(String name) {
-		return customerRepository.findByName(name);
-	}
+    @Override
+    public void delete(Integer id) {
+        customerRepository.delete(id);
+    }
+
+    @Override
+    public Customer findById(Integer id) {
+        return customerRepository.findOne(id);
+    }
+
+    @Override
+    public List<Customer> findByName(String name) {
+        return customerRepository.findByName(name);
+    }
 
 
 }

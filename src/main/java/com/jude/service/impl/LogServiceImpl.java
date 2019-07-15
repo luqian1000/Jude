@@ -25,78 +25,78 @@ import com.jude.util.StringUtil;
 
 /**
  * 系统日志Service实现类
+ *
  * @author jude
- * 
  */
 @Service("logService")
-public class LogServiceImpl implements LogService{
+public class LogServiceImpl implements LogService {
 
-	@Resource
-	private LogRepository logRepository;
-	
-	@Resource
-	private UserRepository userRepository;
-	
-	@Override
-	public void save(Log log) {
-		log.setTime(new Date()); // 设置操作日期
-		log.setUser(userRepository.findByUserName((String) SecurityUtils.getSubject().getPrincipal())); // 设置用户名
-		logRepository.save(log);
-	}
+    @Resource
+    private LogRepository logRepository;
 
-	@Override
-	public List<Log> list(Log log, Integer page, Integer pageSize, Direction direction, String... properties) {
-		Pageable pageable=new PageRequest(page-1, pageSize, direction,properties);
-		Page<Log> pageLog=logRepository.findAll(new Specification<Log>(){
+    @Resource
+    private UserRepository userRepository;
 
-			@Override
-			public Predicate toPredicate(Root<Log> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate=cb.conjunction();
-				if(log!=null){
-					if(log.getUser()!=null && StringUtil.isNotEmpty(log.getUser().getTrueName())){
-						predicate.getExpressions().add(cb.like(root.get("user").get("trueName"), "%"+log.getUser().getTrueName()+"%"));
-					}
-					if(StringUtil.isNotEmpty(log.getType())){
-						predicate.getExpressions().add(cb.equal(root.get("type"), log.getType()));
-					}
-					if(log.getBtime()!=null){
-						predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("time"), log.getBtime()));
-					}
-					if(log.getEtime()!=null){
-						predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("time"), log.getEtime()));
-					}
-				}
-				return predicate;
-			}
-		  },pageable);
-		return pageLog.getContent();
-	}
+    @Override
+    public void save(Log log) {
+        log.setTime(new Date()); // 设置操作日期
+        log.setUser(userRepository.findByUserName((String) SecurityUtils.getSubject().getPrincipal())); // 设置用户名
+        logRepository.save(log);
+    }
 
-	@Override
-	public Long getCount(Log log) {
-		Long count=logRepository.count(new Specification<Log>() {
+    @Override
+    public List<Log> list(Log log, Integer page, Integer pageSize, Direction direction, String... properties) {
+        Pageable pageable = new PageRequest(page - 1, pageSize, direction, properties);
+        Page<Log> pageLog = logRepository.findAll(new Specification<Log>() {
 
-			@Override
-			public Predicate toPredicate(Root<Log> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				Predicate predicate=cb.conjunction();
-				if(log!=null){
-					if(log.getUser()!=null && StringUtil.isNotEmpty(log.getUser().getTrueName())){
-						predicate.getExpressions().add(cb.like(root.get("user").get("trueName"), "%"+log.getUser().getTrueName()+"%"));
-					}
-					if(StringUtil.isNotEmpty(log.getType())){
-						predicate.getExpressions().add(cb.equal(root.get("type"), log.getType()));
-					}
-					if(log.getBtime()!=null){
-						predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("time"), log.getBtime()));
-					}
-					if(log.getEtime()!=null){
-						predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("time"), log.getEtime()));
-					}
-				}
-				return predicate;
-			}
-		});
-		return count;
-	}
+            @Override
+            public Predicate toPredicate(Root<Log> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if (log != null) {
+                    if (log.getUser() != null && StringUtil.isNotEmpty(log.getUser().getTrueName())) {
+                        predicate.getExpressions().add(cb.like(root.get("user").get("trueName"), "%" + log.getUser().getTrueName() + "%"));
+                    }
+                    if (StringUtil.isNotEmpty(log.getType())) {
+                        predicate.getExpressions().add(cb.equal(root.get("type"), log.getType()));
+                    }
+                    if (log.getBtime() != null) {
+                        predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("time"), log.getBtime()));
+                    }
+                    if (log.getEtime() != null) {
+                        predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("time"), log.getEtime()));
+                    }
+                }
+                return predicate;
+            }
+        }, pageable);
+        return pageLog.getContent();
+    }
+
+    @Override
+    public Long getCount(Log log) {
+        Long count = logRepository.count(new Specification<Log>() {
+
+            @Override
+            public Predicate toPredicate(Root<Log> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if (log != null) {
+                    if (log.getUser() != null && StringUtil.isNotEmpty(log.getUser().getTrueName())) {
+                        predicate.getExpressions().add(cb.like(root.get("user").get("trueName"), "%" + log.getUser().getTrueName() + "%"));
+                    }
+                    if (StringUtil.isNotEmpty(log.getType())) {
+                        predicate.getExpressions().add(cb.equal(root.get("type"), log.getType()));
+                    }
+                    if (log.getBtime() != null) {
+                        predicate.getExpressions().add(cb.greaterThanOrEqualTo(root.get("time"), log.getBtime()));
+                    }
+                    if (log.getEtime() != null) {
+                        predicate.getExpressions().add(cb.lessThanOrEqualTo(root.get("time"), log.getEtime()));
+                    }
+                }
+                return predicate;
+            }
+        });
+        return count;
+    }
 
 }

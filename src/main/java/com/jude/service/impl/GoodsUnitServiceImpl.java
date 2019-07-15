@@ -12,33 +12,33 @@ import com.jude.service.GoodsUnitService;
 
 /**
  * 商品单位Service实现类
- * @author jude
  *
+ * @author jude
  */
 @Service("goodsUnitService")
-public class GoodsUnitServiceImpl implements GoodsUnitService{
+public class GoodsUnitServiceImpl implements GoodsUnitService {
 
-	@Resource
-	private GoodsUnitRepository goodsUnitRepository;
-	
-	@Override
-	public List<GoodsUnit> listAll() {
-		return goodsUnitRepository.findAll();
-	}
+    @Resource
+    private GoodsUnitRepository goodsUnitRepository;
 
-	@Override
-	public void save(GoodsUnit goodsUnit) {
-		goodsUnitRepository.save(goodsUnit);
-	}
+    @Override
+    public List<GoodsUnit> listAll() {
+        return goodsUnitRepository.findAll();
+    }
 
-	@Override
-	public void delete(Integer id) {
-		goodsUnitRepository.delete(id);
-	}
+    @Override
+    public void save(GoodsUnit goodsUnit) {
+        goodsUnitRepository.save(goodsUnit);
+    }
 
-	@Override
-	public GoodsUnit findById(Integer id) {
-		return goodsUnitRepository.findOne(id);
-	}
+    @Override
+    public void delete(Integer id) {
+        goodsUnitRepository.delete(id);
+    }
+
+    @Override
+    public GoodsUnit findById(Integer id) {
+        return goodsUnitRepository.findOne(id);
+    }
 
 }

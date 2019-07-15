@@ -6,9 +6,9 @@ import com.jude.entity.GoodsUnit;
 
 /**
  * 商品单位Repository接口
- * @author jude
  *
+ * @author jude
  */
-public interface GoodsUnitRepository extends JpaRepository<GoodsUnit, Integer>{
+public interface GoodsUnitRepository extends JpaRepository<GoodsUnit, Integer> {
 
 }

@@ -8,41 +8,41 @@ import javax.persistence.Table;
 
 /**
  * 商品单位实体
- * @author jude
  *
+ * @author jude
  */
 @Entity
-@Table(name="t_goodsunit")
+@Table(name = "t_goodsunit")
 public class GoodsUnit {
-	
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@Column(length=10)
-	private String name; // 商品单位名称
 
-	
-	public Integer getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @Column(length = 10)
+    private String name; // 商品单位名称
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	@Override
-	public String toString() {
-		return "[id=" + id + ", name=" + name + "]";
-	}
-	
-	
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "[id=" + id + ", name=" + name + "]";
+    }
+
+
 }

@@ -8,16 +8,17 @@ import com.jude.entity.User;
 
 /**
  * 用户Repository接口
- * @author jude
  *
+ * @author jude
  */
-public interface UserRepository extends JpaRepository<User, Integer>,JpaSpecificationExecutor<User>{
+public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecificationExecutor<User> {
 
-	/**
-	 * 根据用户名查找用户实体
-	 * @param userName
-	 * @return
-	 */
-	@Query(value="select * from t_user where user_name=?1",nativeQuery=true)
-	public User findByUserName(String userName);
+    /**
+     * 根据用户名查找用户实体
+     *
+     * @param userName
+     * @return
+     */
+    @Query(value = "select * from t_user where user_name=?1", nativeQuery = true)
+    public User findByUserName(String userName);
 }

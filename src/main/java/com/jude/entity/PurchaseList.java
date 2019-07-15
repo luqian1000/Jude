@@ -18,162 +18,157 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * 进货单
- * @author java1234_小锋 老师
  *
+ * @author java1234_小锋 老师
  */
 @Entity
-@Table(name="t_purchaseList")
+@Table(name = "t_purchaseList")
 public class PurchaseList {
 
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@Column(length=100)
-	private String purchaseNumber; // 进货单号
-	
-	@ManyToOne
-	@JoinColumn(name="supplierId")
-	private Supplier supplier; // 供应商
-	
-	@Temporal(TemporalType.TIMESTAMP) 
-	private Date purchaseDate; // 进货日期
-	
-	@Transient
-	private Date bPurchaseDate; // 起始时间 搜索用到
-	
-	@Transient
-	private Date ePurchaseDate; // 结束时间 搜索用到
-	
-	private float amountPayable; // 应付金额
-	
-	private float amountPaid; // 实付金额
-	
-	private Integer state; // 交易状态 1 已付  2 未付
-	
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User user; // 操作用户
-	
-	@Column(length=1000)
-	private String remarks; // 备注
-	
-	@Transient
-	private List<PurchaseListGoods> purchaseListGoodsList=null; // 采购单商品集合
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public Integer getId() {
-		return id;
-	}
+    @Column(length = 100)
+    private String purchaseNumber; // 进货单号
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	
-	public String getPurchaseNumber() {
-		return purchaseNumber;
-	}
+    @ManyToOne
+    @JoinColumn(name = "supplierId")
+    private Supplier supplier; // 供应商
 
-	public void setPurchaseNumber(String purchaseNumber) {
-		this.purchaseNumber = purchaseNumber;
-	}
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date purchaseDate; // 进货日期
 
-	
+    @Transient
+    private Date bPurchaseDate; // 起始时间 搜索用到
 
-	public Supplier getSupplier() {
-		return supplier;
-	}
+    @Transient
+    private Date ePurchaseDate; // 结束时间 搜索用到
 
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
-	}
+    private float amountPayable; // 应付金额
 
-	@JsonSerialize(using=CustomDateSerializer.class)
-	public Date getPurchaseDate() {
-		return purchaseDate;
-	}
+    private float amountPaid; // 实付金额
 
-	public void setPurchaseDate(Date purchaseDate) {
-		this.purchaseDate = purchaseDate;
-	}
+    private Integer state; // 交易状态 1 已付  2 未付
 
-	public float getAmountPayable() {
-		return amountPayable;
-	}
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user; // 操作用户
 
-	public void setAmountPayable(float amountPayable) {
-		this.amountPayable = amountPayable;
-	}
+    @Column(length = 1000)
+    private String remarks; // 备注
 
-	public float getAmountPaid() {
-		return amountPaid;
-	}
+    @Transient
+    private List<PurchaseListGoods> purchaseListGoodsList = null; // 采购单商品集合
 
-	public void setAmountPaid(float amountPaid) {
-		this.amountPaid = amountPaid;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Integer getState() {
-		return state;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setState(Integer state) {
-		this.state = state;
-	}
 
-	
+    public String getPurchaseNumber() {
+        return purchaseNumber;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public void setPurchaseNumber(String purchaseNumber) {
+        this.purchaseNumber = purchaseNumber;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public Supplier getSupplier() {
+        return supplier;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
-	public Date getbPurchaseDate() {
-		return bPurchaseDate;
-	}
+    @JsonSerialize(using = CustomDateSerializer.class)
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
 
-	public void setbPurchaseDate(Date bPurchaseDate) {
-		this.bPurchaseDate = bPurchaseDate;
-	}
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
 
-	public Date getePurchaseDate() {
-		return ePurchaseDate;
-	}
+    public float getAmountPayable() {
+        return amountPayable;
+    }
 
-	public void setePurchaseDate(Date ePurchaseDate) {
-		this.ePurchaseDate = ePurchaseDate;
-	}
-	
-	
-	public List<PurchaseListGoods> getPurchaseListGoodsList() {
-		return purchaseListGoodsList;
-	}
+    public void setAmountPayable(float amountPayable) {
+        this.amountPayable = amountPayable;
+    }
 
-	public void setPurchaseListGoodsList(List<PurchaseListGoods> purchaseListGoodsList) {
-		this.purchaseListGoodsList = purchaseListGoodsList;
-	}
+    public float getAmountPaid() {
+        return amountPaid;
+    }
 
-	@Override
-	public String toString() {
-		return "PurchaseList [id=" + id + ", purchaseNumber=" + purchaseNumber + ", supplier=" + supplier
-				+ ", purchaseDate=" + purchaseDate + ", bPurchaseDate=" + bPurchaseDate + ", ePurchaseDate="
-				+ ePurchaseDate + ", amountPayable=" + amountPayable + ", amountPaid=" + amountPaid + ", state=" + state
-				+ ", user=" + user + ", remarks=" + remarks + "]";
-	}
+    public void setAmountPaid(float amountPaid) {
+        this.amountPaid = amountPaid;
+    }
 
-	
-	
-	
-	
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public Date getbPurchaseDate() {
+        return bPurchaseDate;
+    }
+
+    public void setbPurchaseDate(Date bPurchaseDate) {
+        this.bPurchaseDate = bPurchaseDate;
+    }
+
+    public Date getePurchaseDate() {
+        return ePurchaseDate;
+    }
+
+    public void setePurchaseDate(Date ePurchaseDate) {
+        this.ePurchaseDate = ePurchaseDate;
+    }
+
+
+    public List<PurchaseListGoods> getPurchaseListGoodsList() {
+        return purchaseListGoodsList;
+    }
+
+    public void setPurchaseListGoodsList(List<PurchaseListGoods> purchaseListGoodsList) {
+        this.purchaseListGoodsList = purchaseListGoodsList;
+    }
+
+    @Override
+    public String toString() {
+        return "PurchaseList [id=" + id + ", purchaseNumber=" + purchaseNumber + ", supplier=" + supplier
+                + ", purchaseDate=" + purchaseDate + ", bPurchaseDate=" + bPurchaseDate + ", ePurchaseDate="
+                + ePurchaseDate + ", amountPayable=" + amountPayable + ", amountPaid=" + amountPaid + ", state=" + state
+                + ", user=" + user + ", remarks=" + remarks + "]";
+    }
+
+
 }

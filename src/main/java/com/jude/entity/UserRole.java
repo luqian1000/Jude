@@ -9,54 +9,53 @@ import javax.persistence.Table;
 
 /**
  * 用户角色关联实体
- * @author jude
  *
+ * @author jude
  */
 @Entity
-@Table(name="t_userRole")
+@Table(name = "t_userRole")
 public class UserRole {
 
-	@Id
-	@GeneratedValue
-	private Integer id; // 编号
-	
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User user; // 用户
-	
-	@ManyToOne
-	@JoinColumn(name="roleId")
-	private Role role; // 角色
+    @Id
+    @GeneratedValue
+    private Integer id; // 编号
 
-	public Integer getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user; // 用户
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "roleId")
+    private Role role; // 角色
 
-	public User getUser() {
-		return user;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Role getRole() {
-		return role;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	@Override
-	public String toString() {
-		return "[id=" + id + ", user=" + user + ", role=" + role + "]";
-	}
-	
-	
-	
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "[id=" + id + ", user=" + user + ", role=" + role + "]";
+    }
+
+
 }
